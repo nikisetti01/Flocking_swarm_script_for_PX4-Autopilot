@@ -25,7 +25,7 @@ def m_to_deg(m) -> float:
 
 async def main():
     """
-    Before starting the flocking alghoritm, 
+    Before starting the flocking algorithm, 
     the drones are randomly moved in an 8m circular area
     """
     
