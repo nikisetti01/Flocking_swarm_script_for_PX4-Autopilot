@@ -7,6 +7,7 @@ import random
 import math
 from Flocking import start_flocking
 from modules.CONSTANTS import Constants
+from genetic_algorithm import genetic_algorithm
 
 
 
@@ -48,9 +49,13 @@ async def main():
    
     await swarm.set_positions(positions)
     
-   
+    params=[Constants.COHESION_FACTOR,Constants.ALIGNEMENT_FACTOR,Constants.SEPARATION_FACTOR]
 
-    await start_flocking(Constants.EXAMPLE_DESTINATION,swarm)
+
+    variances_array=[]
+    await start_flocking(Constants.EXAMPLE_DESTINATION,swarm,
+    variances_array,  params   )
+    await genetic_algorithm(swarm)
       
         
         
