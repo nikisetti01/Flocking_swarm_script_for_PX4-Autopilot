@@ -149,7 +149,7 @@ async def start_flocking(next_position:DronePosition,swarm:Swarm, variances_arra
         after 6 steps the test stops and 
         the graphs of the various indices collected over time appear
         """
-        if counter_move== 12 :#Constants.MAX_PASSES :
+        if counter_move==Constants.MAX_PASSES :
             plot_data(data_collector)
             break
         await asyncio.sleep(2)
