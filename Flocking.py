@@ -40,6 +40,7 @@ async def calculate_distance(index,other,swarm:Swarm)->float:
     return  distance
 def normalize(array): 
     length=np.linalg.norm(array)
+
     normalize_arr=array/length
     return normalize_arr
 async def set_next_pos(position,index,swarm:Swarm):
@@ -90,7 +91,7 @@ async def flocking(index,future_position:DronePosition,swarm:Swarm, params):
                 num_neighbors +=1
             # if the distance is less then separation_radius then there is risk of collisions
             if distance < Constants.SEPARATION_RADIUS :
-                # if there is risk of collisions than the alghoritm calculates the separation value 
+                # if there is risk of collisions than the algorithm calculates the separation value 
                  diff=start_position-other_position
                  diff /=distance **2
                  separation+=diff
@@ -116,10 +117,8 @@ async def flocking(index,future_position:DronePosition,swarm:Swarm, params):
         await   set_next_veloc(new_velocity,index,swarm)
 
 async def start_flocking(next_position:DronePosition,swarm:Swarm, variances_array, params):
-    """
-    Testing the alghoritm with an example destination
-    the algorithm is reloaded every time the swarm moves 10m attending 4 seconds
-    """
+   
+
     data_collector=[]
     counter_move=0
     temp=await swarm.positions
