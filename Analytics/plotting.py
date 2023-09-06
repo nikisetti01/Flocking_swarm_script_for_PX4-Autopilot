@@ -4,9 +4,9 @@ from mpl_toolkits.mplot3d import Axes3D
 import numpy as np
 
 def plot_data(data):
-    # Estrai le informazioni necessarie
+    # collect data
     num_data_points = len(data)
-    time_seconds = np.arange(0, num_data_points * 4, 4)  # Creazione di un array di tempi in secondi
+    time_seconds = np.arange(0, num_data_points * 4, 4)  
 
     avg_dispersion_values = [item['average_dispersion'] for item in data]
     var_dispersion_values = [item['dispersion_variance'] for item in data]
@@ -15,7 +15,7 @@ def plot_data(data):
     var_velocity_x = [item['velocity_variance'][0] for item in data]
     var_velocity_y = [item['velocity_variance'][1] for item in data]
 
-    # Crea il grafico 2D per l'average_dispersion
+    # 2D graphic average dispersion
     plt.figure(figsize=(10, 4))
     plt.plot(time_seconds, avg_dispersion_values, marker='o', linestyle='-', color='blue')
     plt.title('Average Dispersion Over Time')
@@ -25,7 +25,7 @@ def plot_data(data):
     plt.tight_layout()
     plt.show()
 
-    # Crea il grafico 2D per il var_dispersione
+    # 2D graphic Dispersion Variance
     plt.figure(figsize=(10, 4))
     plt.plot(time_seconds, var_dispersion_values, marker='o', linestyle='-', color='green')
     plt.title('Variance of Dispersion Over Time')
@@ -35,7 +35,7 @@ def plot_data(data):
     plt.tight_layout()
     plt.show()
 
-    # Crea il grafico 3D per la velocità media
+    # 3D  graphic average velocity
     fig_velocity = plt.figure(figsize=(8, 6))
     ax_velocity = fig_velocity.add_subplot(111, projection='3d')
     ax_velocity.scatter(avg_velocity_x, avg_velocity_y, time_seconds, c='b', marker='o')
@@ -48,7 +48,7 @@ def plot_data(data):
     plt.tight_layout()
     plt.show()
 
-    # Crea il grafico 3D per la varianza della media della velocità
+    # 3D graphic velocity variance
     fig_var_velocity = plt.figure(figsize=(8, 6))
     ax_var_velocity = fig_var_velocity.add_subplot(111, projection='3d')
     ax_var_velocity.scatter(var_velocity_x, var_velocity_y, time_seconds, c='r', marker='o')

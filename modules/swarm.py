@@ -164,6 +164,7 @@ class Swarm:
 
         try:
             drone = self.__drones[index]
+            
             return await drone.action.get_maximum_speed()
         except IndexError:
             logger.error(f"Drone at index {index} not found.")
@@ -218,17 +219,14 @@ class Swarm:
      velo=await  self.get_velocity(index)
      current_velocity_north=velo[0]
      current_velocity_east=velo[1]
-     current_velocity_down=velo[2]
-     
-
-     
+     current_velocity_down=velo[2]     
      await offboard.set_velocity_ned(VelocityNedYaw(current_velocity_north,current_velocity_east,current_velocity_down, 0.0))
  
      await offboard.start()
 
     # Set the new velocity
      await offboard.set_velocity_ned(VelocityNedYaw(velocity_north_m_s, velocity_east_m_s, velocity_down_m_s, yaw_deg))
-     await asyncio.sleep(2)  # Puoi regolare la durata se necessario
+     await asyncio.sleep(2) 
 
     # Turn off Offboard mode
 
